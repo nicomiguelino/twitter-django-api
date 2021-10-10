@@ -10,6 +10,7 @@ flake8 = "~=3.9.2"
 psycopg2 = "~=2.9.1"
 pytest-django = "~=4.4.0"
 pytest-randomly = "~=3.10.1"
+graphene-django = "~=2.15.0"
 
 [dev-packages]
 

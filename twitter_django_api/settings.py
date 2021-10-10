@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'tweets',
+    'graphql_api',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +155,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Graphene
+
+GRAPHENE = {
+    'SCHEMA': 'graphql_api.schema.schema',
+}
