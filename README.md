@@ -5,7 +5,7 @@ This is yet another API for a Twitter-like project.
 
 # Development environment setup
 
-Execute the following SQL commands on your PostgreSQL terminal.
+Execute the following SQL commands on your PostgreSQL terminal [1].
 
 ```sql
 CREATE DATABASE [database_name];
@@ -26,3 +26,8 @@ Make sure that you've installed `libpq-dev` and `python3-dev` on your developmen
 ```bash
 sudo apt install libpq-dev python3-dev
 ```
+
+
+# References
+
+- [1] Ellingwood, J. (2015, March 25). [How to Use PostgreSQL with your Django Application on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04). DigitalOcean.
