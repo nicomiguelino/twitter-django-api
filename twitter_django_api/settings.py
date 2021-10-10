@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,8 +78,27 @@ WSGI_APPLICATION = 'twitter_django_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get(
+            'TWITTER_CLONE_API_DB_NAME',
+            'twitter_clone_api_developer_db'
+        ),
+        'USER': os.environ.get(
+            'TWITTER_CLONE_API_DB_USER',
+            'twitter_clone_api_developer',
+        ),
+        'PASSWORD': os.environ.get(
+            'TWITTER_CLONE_API_DB_PASSWORD',
+            'password',
+        ),
+        'HOST': os.environ.get('TWITTER_CLONE_API_DB_HOSTNAME', 'localhost'),
+        'PORT': os.environ.get('TWITTER_CLONE_API_DB_PORT', '5432'),
+        'TEST': {
+            'NAME': os.environ.get(
+                'TWITTER_CLONE_API_TEST_DB_NAME',
+                'twitter_clone_api_test_db'
+            )
+        }
     }
 }
 
