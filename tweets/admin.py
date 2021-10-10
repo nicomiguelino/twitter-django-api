@@ -1,3 +1,8 @@
-from django.contrib import admin
+from django.contrib.admin import ModelAdmin, register
+from .models import Tweet
 
-# Register your models here.
+
+@register(Tweet)
+class TweetAdmin(ModelAdmin):
+    fields = ('content',)
+    list_display = ('id', 'content', 'created_at', 'updated_at')
