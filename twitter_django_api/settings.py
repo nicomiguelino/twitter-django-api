@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tweets',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get(
-            'TWITTER_CLONE_API_DB_NAME',
-            'twitter_clone_api_developer_db'
+            'TWITTER_CLONE_API_DB_NAME', 'twitter_clone_api_developer_db'
         ),
         'USER': os.environ.get(
             'TWITTER_CLONE_API_DB_USER',
@@ -95,10 +95,9 @@ DATABASES = {
         'PORT': os.environ.get('TWITTER_CLONE_API_DB_PORT', '5432'),
         'TEST': {
             'NAME': os.environ.get(
-                'TWITTER_CLONE_API_TEST_DB_NAME',
-                'twitter_clone_api_test_db'
+                'TWITTER_CLONE_API_TEST_DB_NAME', 'twitter_clone_api_test_db'
             )
-        }
+        },
     }
 }
 
