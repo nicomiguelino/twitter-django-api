@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'tweets',
     'graphql_api',
+    'devtools',
 ]
 
 MIDDLEWARE = [
