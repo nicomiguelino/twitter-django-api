@@ -29,7 +29,7 @@ sudo apt install libpq-dev python3-dev
 
 # Custom user model
 
-## Databasa migrations
+## Database migrations
 
 If you're having a hard time making migrations after writing your custom user model, [this](https://stackoverflow.com/a/59499156) might help you.
 
