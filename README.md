@@ -27,6 +27,36 @@ Make sure that you've installed `libpq-dev` and `python3-dev` on your developmen
 sudo apt install libpq-dev python3-dev
 ```
 
+# Custom user model
+
+## Databasa migrations
+
+If you're having a hard time making migrations after writing your custom user model, [this](https://stackoverflow.com/a/59499156) might help you.
+
+
+Inside `twitter_django_api/settings.py`, comment out the following.
+
+- The app name (from the `INSTALLED_APPS`) that contains the custom user model, if you've already added one
+- the `AUTH_USER_MODEL` variable, if you've already defined one
+
+Undo migrations for selected apps by running the following command.
+
+```bash
+python manage.py migrate admin zero
+python manage.py migrate auth zero
+python manage.py migrate contenttypes zero
+python manage.py migrate sessions zero
+```
+
+Now uncomment the lines that you've commented out earlier, then execute the migrations.
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Now you're ready to go.
+
 
 # References
 
