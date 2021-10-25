@@ -13,7 +13,7 @@ class Command(BaseCommand):
             help='flushes the database before loading data',
         )
 
-    def initialize_users(self):
+    def initialize_superusers(self):
         get_user_model().objects.create_superuser(
             username='superuser_01',
             password='password',
@@ -21,27 +21,43 @@ class Command(BaseCommand):
             first_name='Elliot',
             last_name='Alderson',
         )
-        get_user_model().objects.create_user(
-            username='alex.walters',
-            password='password',
-            email='alex.walters@example.com',
-            first_name='Alex',
-            last_name='Walters',
+
+    def initialize_users(self):
+        return (
+            get_user_model().objects.create_user(
+                username='alex.walters',
+                password='password',
+                email='alex.walters@example.com',
+                first_name='Alex',
+                last_name='Walters',
+            ),
+            get_user_model().objects.create_user(
+                username='harry.potter',
+                password='password',
+                email='harry.potter@example.com',
+                first_name='Harry',
+                last_name='Potter',
+            ),
         )
 
-    def initialize_tweets(self):
+    def initialize_tweets(self, users):
+        user_1, user_2 = users
         tweets = [
             {
                 'content': 'My very first tweet. Yay!',
+                'user': user_1,
             },
             {
                 'content': 'Yet another tweet from yours, truly.',
+                'user': user_2,
             },
             {
                 'content': 'Third time\'s a charm, indeed!',
+                'user': user_1,
             },
             {
                 'content': 'Make good choices. #MagpaRehistroKa',
+                'user': user_2,
             },
         ]
 
@@ -50,5 +66,6 @@ class Command(BaseCommand):
 
     @flush_database
     def handle(self, *args, **options):
-        self.initialize_users()
-        self.initialize_tweets()
+        self.initialize_superusers()
+        users = self.initialize_users()
+        self.initialize_tweets(users)
