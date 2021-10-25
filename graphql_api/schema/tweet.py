@@ -5,7 +5,7 @@ from .user import UserType
 
 
 class TweetType(DjangoObjectType):
-    user = Field(UserType)
+    user = Field(UserType, description='The user who created the tweet')
 
     class Meta:
         model = Tweet
