@@ -29,7 +29,7 @@ urlpatterns = [
         csrf_exempt(
             GraphQLView.as_view(
                 graphiql=os.environ.get(
-                    'TWITTER_CLONE_API_ENABLE_GRAPHIQL', True
+                    'TWITTER_CLONE_API_ENABLE_GRAPHIQL', False
                 ),
             ),
         ),
