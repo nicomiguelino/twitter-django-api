@@ -17,7 +17,7 @@ Including another URLconf
 import os
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
@@ -29,9 +29,11 @@ urlpatterns = [
         csrf_exempt(
             GraphQLView.as_view(
                 graphiql=os.environ.get(
-                    'TWITTER_CLONE_API_ENABLE_GRAPHIQL', True
+                    'TWITTER_CLONE_API_ENABLE_GRAPHIQL', False
                 ),
             ),
-        )
+        ),
+        name='graphql',
     ),
+    path('graphql_api/', include('graphql_api.urls')),
 ]
