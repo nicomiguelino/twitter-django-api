@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from graphql_jwt.decorators import jwt_cookie
 
 
 urlpatterns = [
@@ -27,9 +28,11 @@ urlpatterns = [
     path(
         'graphql/',
         csrf_exempt(
-            GraphQLView.as_view(
-                graphiql=os.environ.get(
-                    'TWITTER_CLONE_API_ENABLE_GRAPHIQL', False
+            jwt_cookie(
+                GraphQLView.as_view(
+                    graphiql=os.environ.get(
+                        'TWITTER_CLONE_API_ENABLE_GRAPHIQL', False
+                    ),
                 ),
             ),
         ),
